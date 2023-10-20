@@ -1,5 +1,6 @@
 package shapes;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -44,5 +45,8 @@ public class RectangleFigur extends Shape{
     }
     public void printproperetys(){
         System.out.println("X value: "+ getX() +"\n"+"Y value: "+getY()+"\n"+"Width: "+getWidth()+"\n"+"Height: "+getHeight()+"\n"+"Fill Color:"+getFillColor()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
+    }
+    public void descriptionupdater(Label Text){
+        Text.setText("X value: "+ getX() +"\n"+"Y value: "+getY()+"\n"+"Width: "+getWidth()+"\n"+"Height: "+getHeight()+"\n"+"Fill Color:"+getFillColor()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
     }
 }

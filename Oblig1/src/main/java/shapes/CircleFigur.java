@@ -1,5 +1,6 @@
 package shapes;
 
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.layout.Pane;
@@ -45,6 +46,9 @@ public class CircleFigur extends Shape {
     }
     public void printproperetys(){
         System.out.println("X value: "+ getX() +"\n"+"Y value: "+getY()+"\n"+"Radius: "+getRadius()+"\n"+"Fill Color:"+getFillColor()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
+    }
+    public void descriptionupdater(Label Text){
+        Text.setText("X value: "+ getX() +"\n"+"Y value: "+getY()+"\n"+"Radius: "+getRadius()+"\n"+"Fill Color:"+getFillColor()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
     }
 
 }

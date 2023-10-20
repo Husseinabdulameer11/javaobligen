@@ -1,5 +1,6 @@
 package shapes;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -36,6 +37,9 @@ public  class LineFigur extends Shape {
         return (Color) line.getStroke();
     }
     public void printproperetys(){
-        System.out.println(" start X value: "+ getStartX() +"\n"+"start Y value: "+getStartY()+"\n"+"end X value : "+getEndX()+"\n"+"end Y value:"+getEndY()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
+        System.out.println("start X value: "+ getStartX() +"\n"+"start Y value: "+getStartY()+"\n"+"end X value : "+getEndX()+"\n"+"end Y value:"+getEndY()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
+    }
+    public void descriptionupdater(Label Text){
+        Text.setText("start X value: "+ getStartX() +"\n"+"start Y value: "+getStartY()+"\n"+"end X value : "+getEndX()+"\n"+"end Y value:"+getEndY()+"\n"+"Stroke Color: "+getStrokeColor()+"\n");
     }
 }

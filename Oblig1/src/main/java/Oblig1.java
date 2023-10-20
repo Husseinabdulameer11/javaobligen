@@ -11,10 +11,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.scene.text.Text;
 import shapes.CircleFigur;
 import shapes.LineFigur;
 import shapes.RectangleFigur;
+import shapes.TextFigur;
 
 
 public class Oblig1 extends Application {
@@ -74,10 +74,13 @@ private enum DrawingMode {
         Canvaspane.setBackground(new Background(new BackgroundFill(Color.WHITE,CornerRadii.EMPTY,Insets.EMPTY)));
         Canvaspane.setMinWidth(600);
         Pane Descriptionpane = new Pane();
-        Label DescriptionTittl = new Label("Beskrivelse");
-        Descriptionpane.getChildren().add(DescriptionTittl);
+        Label DescriptionTittl = new Label("       Beskrivelse  ");
+        Label FigurDescription = new Label("");
+        FigurDescription.setStyle("-fx-padding:20px");
+        Descriptionpane.getChildren().addAll(DescriptionTittl, FigurDescription);
         Descriptionpane.setBackground(new Background(new BackgroundFill(Color.PINK,CornerRadii.EMPTY,Insets.EMPTY)));
         Descriptionpane.setMinWidth(300);
+
 
         Canvaspane.setOnMouseClicked(mouseEvent -> {
             switch (currenMode) {
@@ -96,12 +99,11 @@ private enum DrawingMode {
                 case TEXT:
                     startX = mouseEvent.getX();
                     startY = mouseEvent.getY();
-                    Text text = new Text(startX, startY,tf.getText());
-                    text.setFill(Strokefarge.getValue());
-                    Canvaspane.getChildren().add(text);
+                    TextFigur text = new TextFigur(startX, startY, Canvaspane, Descriptionpane,Strokefarge.getValue(),Velgfarge.getValue());
+                    text.CreatText(startX, startY, tf.getText(), Strokefarge.getValue() );
+                    text.descriptionupdater(FigurDescription);
+                    Canvaspane.getChildren().add(text.getText());
                     break;
-
-
             }
         });
 
@@ -154,8 +156,6 @@ private enum DrawingMode {
                         previewRectangel.setHeight(heigth);
 
                     }
-
-
             }
 
             });
@@ -167,9 +167,8 @@ private enum DrawingMode {
                         double radius = previewCircle.getRadius();
 
                         CircleFigur cf = new CircleFigur(startX, startY, Canvaspane, Descriptionpane,Strokefarge.getValue(),Velgfarge.getValue(), radius);
-                        cf.printproperetys();
                         Canvaspane.getChildren().add(cf.getCircle());
-
+                        cf.descriptionupdater(FigurDescription);
                         Canvaspane.getChildren().remove(previewCircle);
                         previewCircle = null;
                     }
@@ -179,7 +178,7 @@ private enum DrawingMode {
                         double endX = mouseEvent.getX();
                         double endY = mouseEvent.getY();
                         LineFigur lf = new LineFigur(startX, startY, endX, endY,  Canvaspane, Descriptionpane,Strokefarge.getValue());
-                        lf.printproperetys();
+                        lf.descriptionupdater(FigurDescription);
                         Canvaspane.getChildren().add(lf.getLine());
                         Canvaspane.getChildren().remove(previewLine);
                         previewLine = null;
@@ -191,7 +190,7 @@ private enum DrawingMode {
                         double width = previewRectangel.getWidth();
                         double heigth = previewRectangel.getHeight();
                         RectangleFigur rf = new RectangleFigur(startX, startY, Canvaspane, Descriptionpane,Strokefarge.getValue(),Velgfarge.getValue(), width, heigth);
-                        rf.printproperetys();
+                        rf.descriptionupdater(FigurDescription);
                         Canvaspane.getChildren().add(rf.getRectangle());
                         Canvaspane.getChildren().remove(previewRectangel);
                         previewRectangel = null;
